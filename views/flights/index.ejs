@@ -1,0 +1,41 @@
+<%- include("../partials/html-head.ejs")  %> 
+<link rel="stylesheet" href="/stylesheets/flights/index.css">
+<%- include("../partials/nav.ejs") %>  
+  
+  
+  <h1>Flights</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Flight Number</th>
+        <th>Airline</th>
+        <th>Airport</th>
+        <th>Departure</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% flights.forEach(flight => { %>
+        <tr>
+          <td>
+            <a href="/flights/<%= flight._id %>"><%= flight.flightNo %></a>
+          </td>
+          <td><%= flight.airline %></td>
+          <td><%= flight.airport %></td>
+          <td><%= flight.departs %></td>
+          <td>
+            <a href="/flights/<%= flight._id %>/edit">edit</a>
+          </td> 
+          <td>
+            <form action="/flights/<%= flight._id %>?_method=DELETE" class="delete-form"method="POST">
+              <button type="submit">X</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <a href="/flights/new">Add a Flight</a>
+
+  <%- include("../partials/footer.ejs") %>   

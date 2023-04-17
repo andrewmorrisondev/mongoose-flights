@@ -4,10 +4,18 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css">
   <title>Error! 🎊</title>
 </head>
 <body>
-  <h1><%= message %></h1>
+  <div class="nav">
+    <ul>
+      <li><a href="/flights">All Flights</a></li>
+      <li><a href="/flights/new">Add a Flight</a></li>
+    </ul>
+    <h1>Mongoose Flights Lab</h1>
+  </div>
+  <h2><%= message %></h2>
   <h2><%= error.status %></h2>
   <pre><%= error.stack %></pre>
 </body>

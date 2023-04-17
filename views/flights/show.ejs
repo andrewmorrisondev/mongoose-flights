@@ -1,0 +1,15 @@
+<%- include("../partials/html-head.ejs")  %> 
+<link rel="stylesheet" href="/stylesheets/flights/show.css">
+<%- include("../partials/nav.ejs") %>  
+
+  <h1>Flight</h1>
+  <h3>Airline: <%= flight.airline %></h3>
+  <h3>Airport: <%= flight.airport %></h3>
+  <h3>Flight #: <%= flight._id %></h3>
+  <a href="/flights/<%= flight._id %>/edit">edit</a>
+  <form action="/flights/<%= flight._id %>?_method=DELETE" class="delete-form"method="POST">
+    <button type="submit">X</button>
+  </form>
+  <a href="/flights">Go Back</a>
+
+<%- include("../partials/footer.ejs") %>

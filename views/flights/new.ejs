@@ -1,0 +1,28 @@
+<%- include("../partials/html-head.ejs")  %> 
+<link rel="stylesheet" href="/stylesheets/flights/forms.css">
+<%- include("../partials/nav.ejs") %>  
+
+  <h1>New Flight</h1>
+  <form action="/flights" method="POST" autocomplete="on">
+    <label>Airline:
+      <input type="text" name="airline">
+    </label>
+    <label>Airport:
+      <select name="airport">
+        <option value="DEN">DEN</option>
+        <option value="JFK">JFK</option>
+        <option value="AUS">AUS</option>
+        <option value="DFW">DFW</option>
+        <option value="LAX">LAX</option>
+      </select>
+    </label>
+    <label>Flight #:
+      <input type="number" name="flightNo">
+    </label>
+    <label>Departs:
+      <input type="date" name="departs" value="<%= departureDate %>">
+    </label>
+    <button type="submit">Save Flight</button>
+  </form>
+  
+<%- include("../partials/footer.ejs") %>   

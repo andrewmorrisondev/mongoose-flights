@@ -1,4 +1,5 @@
 <%- include("../partials/html-head.ejs")  %> 
+<link rel="stylesheet" href="/stylesheets/flights/forms.css">
 <link rel="stylesheet" href="/stylesheets/flights/show.css">
 <%- include("../partials/nav.ejs") %>  
 
@@ -6,10 +7,40 @@
   <h3>Airline: <%= flight.airline %></h3>
   <h3>Airport: <%= flight.airport %></h3>
   <h3>Flight #: <%= flight._id %></h3>
-  <a href="/flights/<%= flight._id %>/edit">edit</a>
-  <form action="/flights/<%= flight._id %>?_method=DELETE" class="delete-form"method="POST">
-    <button type="submit">X</button>
+  <table>
+    <thead>
+      <tr>
+        <th>Seat</th>
+        <th>Price</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% flight.tickets.forEach(ticket => { %>
+      <tr>
+        <td> <%= ticket.seat %></td>
+        <td> <%= ticket.price %></td>
+        <td>
+          <form action="/flights/<%= flight._id%>/tickets/<%= ticket._id %>?_method=DELETE" method="POST">
+            <button>X</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <form action="/flights/<%= flight._id %>/tickets" method="POST" autocomplete="on">
+    </label>
+    <label>Seat:
+      <input type="String" name="seat" placeholder="A1 - F99">
+    </label>
+    <label>Price:
+      <input type="Number" name="price" value="179">
+    </label>
+    <button type="submit">Add Ticket</button>
   </form>
+
+  <a href="/flights/<%= flight._id %>/edit">edit</a>
   <a href="/flights">Go Back</a>
 
 <%- include("../partials/footer.ejs") %>

@@ -18,10 +18,16 @@ router.post('/', flightsCtrl.create)
 // GET localhost:3000/flights/:flightId/edit
 router.get('/:flightId/edit', flightsCtrl.edit)
 
-// localhost:3000/flights/:flightId
+// PUT localhost:3000/flights/:flightId
 router.put("/:flightId", flightsCtrl.update)
 
 // DELETE localhost:3000/flights/:flightId
 router.delete('/:flightId', flightsCtrl.delete)
+
+// DELETE localhost:3000/flights/:flightId/tickets/:ticketId
+router.delete('/:flightId/tickets/:ticketId', flightsCtrl.deleteTicket)
+
+// POST localhost:3000/flights/:flightId/tickets
+router.post('/:flightId/tickets', flightsCtrl.createTicket)
 
 export { router }

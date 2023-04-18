@@ -1,4 +1,4 @@
-import { Flight } from "../models/flight.js"
+import { Flight, Ticket } from "../models/flight.js"
 
 function index(req, res) {
   Flight.find({})
@@ -90,8 +90,8 @@ function edit(req, res) {
       title: "Edit Flight"
     })
   })
-  .catch(err => {
-    console.log(err)
+  .catch(error => {
+    console.log(error)
     res.redirect("/")
   })
 }
@@ -101,9 +101,43 @@ function update(req, res) {
   .then(flight => {
     res.redirect(`/flights/${flight._id}`)
   })
+  .catch(error => {
+    console.log(error)
+    res.redirect("/flights")
+  })
+}
+
+function createTicket(req, res) {
+  Flight.findById(req.params.flightId)
+  .then(flight => {
+    flight.tickets.push(req.body)
+    flight.save()
+    .then(() => {
+      res.redirect(`/flights/${flight._id}`)
+    })
+    .catch(error => {
+      console.log(error)
+      res.redirect(`/`)
+    })
+  })
+}
+
+function deleteTicket(req, res) {
+  Flight.findById(req.params.flightId)
+  .then(flight => {
+    flight.tickets.remove(req.params.ticketId)
+    flight.save()
+    .then(() => {
+      res.redirect(`/flights/${flight._id}`)
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/flights')
+    })
+  })
   .catch(err => {
     console.log(err)
-    res.redirect("/flights")
+    res.redirect('/flights')
   })
 }
 
@@ -114,5 +148,7 @@ export {
   show,
   deleteFlight as delete,
   edit,
-  update
+  update,
+  createTicket,
+  deleteTicket
 }

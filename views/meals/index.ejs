@@ -1,0 +1,34 @@
+<%- include("../partials/html-head.ejs")  %> 
+<link rel="stylesheet" href="/stylesheets/flights/index.css">
+<%- include("../partials/nav.ejs") %>  
+  
+  
+  <h1>Meals</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% meals.forEach(meal => { %>
+        <tr>
+          <td>
+            <a href="/meals/<%= meal._id %>"><%= meal.name %></a>
+          </td>
+          <td>
+            <a href="/meals/<%= meal._id %>/edit">edit</a> 
+          <td>
+            <form action="/meals/<%= meal._id %>?_method=DELETE" class="delete-form"method="POST">
+              <button type="submit">X</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <a href="/meals/new">Add a Meal</a>
+
+  <%- include("../partials/footer.ejs") %>   

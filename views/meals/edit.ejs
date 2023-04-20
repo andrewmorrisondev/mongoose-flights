@@ -1,0 +1,13 @@
+<%- include("../partials/html-head.ejs")  %>
+<link rel="stylesheet" href="/stylesheets/flights/forms.css">
+<%- include("../partials/nav.ejs") %>  
+
+  <h1>Edit Meal</h1>
+  <form action="/meals/<%= meal._id %>?_method=PUT" method="POST">
+    <label>Meal:
+      <input type="string" name="name" value="<%= meal.name %>">
+    </label>
+    <button type="submit">Save Meal</button>
+  </form>
+
+<%- include("../partials/footer.ejs") %>  

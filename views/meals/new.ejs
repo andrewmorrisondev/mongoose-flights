@@ -1,0 +1,13 @@
+<%- include("../partials/html-head.ejs")  %> 
+<link rel="stylesheet" href="/stylesheets/flights/forms.css">
+<%- include("../partials/nav.ejs") %>  
+
+  <h1>New Meal</h1>
+  <form action="/meals" method="POST" autocomplete="on">
+    <label>Meal:
+      <input type="string" name="name" placeholder="Oysters Rockafeller">
+    </label>
+    <button type="submit">Save Meal</button>
+  </form>
+  
+<%- include("../partials/footer.ejs") %>   

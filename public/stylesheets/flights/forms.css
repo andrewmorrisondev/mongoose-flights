@@ -2,7 +2,7 @@ form {
   display: grid;
   justify-items: end;
   grid-gap: 10px;
-  grid-template-columns: repeat(1, minmax(auto, auto));
+  grid-template-columns: repeat(2, minmax(auto, auto));
   font-size: 20px;
 }
 

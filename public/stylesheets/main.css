@@ -13,6 +13,10 @@ html {
   Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
+body * {
+  border: 1p solid red;
+}
+
 body {
   /* background-color: gray; */
   /* Use a system font, if none are available use an available sans-sarif font */
